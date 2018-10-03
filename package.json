@@ -1,0 +1,27 @@
+{
+  "name": "ezp",
+  "version": "0.0.1",
+  "description": "Easy Proxy for fluent APIs",
+  "main": "index.js",
+  "scripts": {
+    "lint": "eslint ."
+  },
+  "dependencies": {},
+  "devDependencies": {
+    "eslint": "^5.2.0"
+  },
+  "repository": "mvaldesdeleon/ezp",
+  "keywords": [
+    "proxy",
+    "easy",
+    "simple",
+    "fluent api",
+    "api",
+    "api design",
+    "magic",
+    "magic api",
+    "nodeconfar2018"
+  ],
+  "author": "Martin Valdes de Leon <m.valdesdeleon@gmail.com>",
+  "license": "MIT"
+}
