@@ -1,43 +1,43 @@
-function ezp(magic = {}, escape) {
+function ezp(ezHandler = {}, escape) {
     const handler = {
         get(propsFn, prop) {
             if (prop === escape) {
-                if (!magic.get) return Reflect.get(propsFn, prop);
+                if (!ezHandler.get) return Reflect.get(propsFn, prop);
 
                 const props = propsFn();
 
-                return magic.get(props, prop);
+                return ezHandler.get([...props]);
             } else {
                 return new Proxy(() => [...propsFn(), prop], handler);
             }
         },
         deleteProperty(propsFn, prop) {
-            if (!magic.delete) return Reflect.deleteProperty(propsFn, prop);
+            if (!ezHandler.delete) return Reflect.deleteProperty(propsFn, prop);
 
             const props = propsFn();
 
-            return magic.delete(props, prop);
+            return ezHandler.delete([...props, prop]);
         },
         has(propsFn, prop) {
-            if (!magic.has) return Reflect.has(propsFn, prop);
+            if (!ezHandler.has) return Reflect.has(propsFn, prop);
 
             const props = propsFn();
 
-            return magic.has(props, prop);
+            return ezHandler.has(props, prop);
         },
         set(propsFn, prop, value) {
-            if (!magic.set) return Reflect.set(propsFn, prop, value);
+            if (!ezHandler.set) return Reflect.set(propsFn, prop, value);
 
             const props = propsFn();
 
-            return magic.set(props, prop, value);
+            return ezHandler.set([...props, prop], value);
         },
         apply(propsFn, thisArg, args) {
-            if (!magic.apply) return Reflect.apply(propsFn, thisArg, args);
+            if (!ezHandler.apply) return Reflect.apply(propsFn, thisArg, args);
 
             const props = propsFn();
 
-            return magic.apply(props, ...args);
+            return ezHandler.apply(props, args);
         }
     };
 

@@ -1,6 +1,6 @@
 {
   "name": "ezp",
-  "version": "0.0.1",
+  "version": "1.0.0",
   "description": "Easy Proxy for fluent APIs",
   "main": "index.js",
   "scripts": {
